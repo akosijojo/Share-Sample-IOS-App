@@ -2,14 +2,14 @@
 //  ViewController.swift
 //  ShareSampleViewController
 //
-//  Created by OrangeApps Inc. on 1/22/19.
-//  Copyright © 2019 OrangeApps Inc. All rights reserved.
+//  Created by Jojo Destreza. on 1/22/19.
+//  Copyright © 2019 Jojo Destreza. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     let showButton : UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
         button.setTitle("Show", for: .normal)
@@ -27,11 +27,11 @@ class ViewController: UIViewController {
         view.addSubview(showButton)
         showButton.center = view.center
     }
-
+    
     @objc func showPopView() {
         let controller = PopUpViewController()
         self.present(controller, animated: true, completion: nil)
     }
-
+    
 }
 

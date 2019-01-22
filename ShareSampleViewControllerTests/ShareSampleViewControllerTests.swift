@@ -2,8 +2,8 @@
 //  ShareSampleViewControllerTests.swift
 //  ShareSampleViewControllerTests
 //
-//  Created by OrangeApps Inc. on 1/22/19.
-//  Copyright © 2019 OrangeApps Inc. All rights reserved.
+//  Created by Jojo Destreza. on 1/22/19.
+//  Copyright © 2019 Jojo Destreza. All rights reserved.
 //
 
 import XCTest

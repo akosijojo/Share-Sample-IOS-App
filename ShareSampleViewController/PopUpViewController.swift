@@ -2,8 +2,8 @@
 //  PopUpViewController.swift
 //  ShareSampleViewController
 //
-//  Created by OrangeApps Inc. on 1/22/19.
-//  Copyright © 2019 OrangeApps Inc. All rights reserved.
+//  Created by Jojo Destreza. on 1/22/19.
+//  Copyright © 2019 Jojo Destreza. All rights reserved.
 //
 
 import UIKit
@@ -31,16 +31,12 @@ class PopUpViewController : UIViewController, UIDocumentInteractionControllerDel
         return btn
     }()
     
-    let shareButton : UILabel = {
-        let btn = UILabel()
-//        btn.setImage(UIImage(named: "sharebtn"), for: .normal)
-//        btn.addTarget(self, action: #selector(shareButtonAction), for: .touchUpInside)
-//        btn.backgroundColor = UIColor.gray
-//        btn.imageEdgeInsets = UIEdgeInsets(top: btn.frame.size.width - 30, left: btn.frame.size.width - 30, bottom: btn.frame.size.width - 30, right: btn.frame.size.width - 30)
-//        btn.layer.borderWidth = 2
-//        btn.layer.borderColor = UIColor.white.cgColor
-        btn.isUserInteractionEnabled = true
-        btn.backgroundColor = .clear
+    let shareButton : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("SHARE", for: .normal)
+        btn.addTarget(self, action: #selector(shareButtonAction), for: .touchUpInside)
+        btn.backgroundColor = UIColor.white
+        btn.setTitleColor(UIColor.black, for: .normal)
         return btn
     }()
     
@@ -65,13 +61,13 @@ class PopUpViewController : UIViewController, UIDocumentInteractionControllerDel
             make.top.leading.equalTo(view)
             make.trailing.bottom.equalTo(view)
         }
-
+        
         contentView.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.top.leading.equalTo(contentView)
             make.trailing.bottom.equalTo(contentView)
         }
-
+        
         let height : CGFloat = view.frame.height / 20
         let padding : CGFloat = view.frame.height / 5 - height + 5
         let width : CGFloat = view.frame.width / 4 + 10
@@ -90,26 +86,25 @@ class PopUpViewController : UIViewController, UIDocumentInteractionControllerDel
             make.height.width.equalTo(30)
         }
         closeButton.layer.cornerRadius = 15
-        
-        let tapShare = UITapGestureRecognizer(target: self, action: #selector(shareButtonAction))
-        shareButton.addGestureRecognizer(tapShare)
     }
     
     @objc func closeAction() {
-//        UIView.animate(withDuration: 0.500, animations: {
-//            self.contentView.alpha = 0
-//            self.view.layoutIfNeeded()
-//        }) { (_) in
-//            self.dismiss(animated: true, completion: nil)
-//        }
+        //        Transition on closing Fading
+        //        UIView.animate(withDuration: 0.500, animations: {
+        //            self.contentView.alpha = 0
+        //            self.view.layoutIfNeeded()
+        //        }) { (_) in
+        //        DISMISS VIEW
         self.dismiss(animated: true, completion: nil)
+        //        }
     }
     
     @objc func shareButtonAction() {
         print("Share Action")
-        postImage(img: UIImage(named: "winImage")!)
+        // Pass the image you want to share
+        postImage(img: UIImage(named: "imageView")!)
     }
-
+    
 }
 
 
@@ -117,13 +112,13 @@ class PopUpViewController : UIViewController, UIDocumentInteractionControllerDel
 extension PopUpViewController {
     
     func postImage(img: UIImage) {
-    
+        
         let shareItems:Array = [img]
         let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
         activityViewController.excludedActivityTypes = [UIActivity.ActivityType.print, UIActivity.ActivityType.postToWeibo, UIActivity.ActivityType.copyToPasteboard, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.postToVimeo]
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         self.present(activityViewController, animated: true, completion: nil)
-
+        
     }
     
 }
